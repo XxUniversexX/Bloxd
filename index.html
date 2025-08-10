@@ -306,6 +306,8 @@
             position: relative;
             overflow: hidden;
             z-index: 1;
+            text-decoration: none;
+            display: inline-block;
         }
         
         .download-btn::before {
@@ -520,16 +522,15 @@
                     <div class="account-name">_XxUniversexX_</div>
                     <div class="server-status status-off" id="account2Status">离线</div>
                 </div>
-                
             </div>
             
             <div class="preview">
                 <h2>资源下载</h2>
                 <div class="download-item">
-                    <span>Relonix UI(圆化修复版)</span>
-                    <button class="download-btn" data-resource="relonix-pack" id="download1">
+                    <span>Relonix材质包</span>
+                    <a href="files/Relonix.zip" class="download-btn" download="Relonix.zip" id="download1">
                         下载
-                    </button>
+                    </a>
                 </div>
                 <div class="download-info">下载后需等待5秒冷却时间</div>
             </div>
@@ -561,7 +562,7 @@
     </div>
     
     <script>
-
+        // 创建星空背景
         function createStars() {
             const starsContainer = document.getElementById('stars');
             for (let i = 0; i < 150; i++) {
@@ -577,6 +578,7 @@
             }
         }
         
+        // 通知管理器
         const notificationManager = {
             notifications: [],
             container: document.getElementById('notificationContainer'),
@@ -611,6 +613,7 @@
             }
         };
 
+        // 状态设置
         const statusSettings = {
             onlineStatus: "offline",
             accounts: [
@@ -619,6 +622,7 @@
             ]
         };
 
+        // 更新在线状态显示
         function updateOnlineStatus() {
             const statusIndicator = document.getElementById('statusIndicator');
             const statusText = document.getElementById('statusText');
@@ -631,7 +635,8 @@
                 statusIndicator.classList.add('status-offline');
                 statusText.textContent = "离线";
             }
-
+            
+            // 更新账号状态
             const account1Status = document.getElementById('account1Status');
             const account2Status = document.getElementById('account2Status');
             
@@ -651,6 +656,7 @@
             }
         }
 
+        // 下载管理器
         const downloadManager = {
             cooldowns: {},
             
@@ -659,9 +665,23 @@
                 const originalText = btn.textContent;
                 
                 notificationManager.showNotification(`开始下载 ${resourceName}...`);
+                
+                // 如果是Relonix材质包，直接触发下载
+                if (btnId === 'download1') {
+                    // 模拟下载延迟
+                    setTimeout(() => {
+                        btn.disabled = false;
+                        btn.textContent = originalText;
+                        delete this.cooldowns[btnId];
+                    }, 5000);
+                    return;
+                }
+                
                 btn.disabled = true;
                 btn.textContent = "下载中...";
-                this.cooldowns[btnId] = true;   
+                
+                this.cooldowns[btnId] = true;
+                
                 setTimeout(() => {
                     btn.disabled = false;
                     btn.textContent = originalText;
@@ -674,8 +694,10 @@
             }
         };
 
-        document.getElementById('download1').addEventListener('click', function() {
+        // 事件监听器设置
+        document.getElementById('download1').addEventListener('click', function(e) {
             if (downloadManager.isInCooldown('download1')) {
+                e.preventDefault(); // 阻止默认下载行为
                 notificationManager.showNotification("请稍后重试...", true);
                 return;
             }
@@ -708,10 +730,9 @@
             updateOnlineStatus();
         });
 
+        // 初始化
         createStars();
         updateOnlineStatus();
     </script>
 </body>
-
 </html>
-
