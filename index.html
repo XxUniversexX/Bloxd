@@ -519,7 +519,7 @@
                 <h3>工作室进展</h3>
                 <p>正在开发Bloxd UI用户脚本 ，预计下个月完成测试版。</p>
                 <h3>材质包更新</h3>
-                <p>Relonix(圆化修复版)材质包UI已于2025/07/20日制作完成。</p>
+                <p>Relonix UI(Rounding)已于2025/07/20日制作完成。</p>
                 <h3>其他</h3>
                 <p>如有其他疑问,请B站私信！</p>
             </div>
@@ -683,7 +683,7 @@
                 notificationManager.showNotification(`开始下载 ${resourceName}...`);
                 
                 if (btnId === 'download1') {
-                    // 模拟下载延迟
+
                     setTimeout(() => {
                         btn.disabled = false;
                         btn.textContent = originalText;
@@ -711,11 +711,11 @@
 
         document.getElementById('download1').addEventListener('click', function(e) {
             if (downloadManager.isInCooldown('download1')) {
-                e.preventDefault(); // 阻止默认下载行为
+                e.preventDefault();
                 notificationManager.showNotification("请稍后重试...", true);
                 return;
             }
-            downloadManager.startDownload('download1', 'Relonix材质包');
+            downloadManager.startDownload('download1', 'Relonix UI(Rounding)');
         });
 
         document.getElementById('download2').addEventListener('click', function() {
@@ -723,7 +723,7 @@
                 notificationManager.showNotification("请稍后重试...", true);
                 return;
             }
-            downloadManager.startDownload('download2', 'Bloxd UI脚本');
+            downloadManager.startDownload('download2', ' ');
         });
 
         document.getElementById('download3').addEventListener('click', function() {
@@ -731,7 +731,7 @@
                 notificationManager.showNotification("请稍后重试...", true);
                 return;
             }
-            downloadManager.startDownload('download3', '游戏指南PDF');
+            downloadManager.startDownload('download3', ' ');
         });
 
         document.getElementById('setOnline').addEventListener('click', function() {
