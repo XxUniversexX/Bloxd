@@ -498,7 +498,7 @@
                 <h3>工作室进展</h3>
                 <p>正在开发Bloxd UI用户脚本 ，预计下个月完成测试版。</p>
                 <h3>材质包更新</h3>
-                <p>Relonix(圆化修复版)材质包UI已于2025/07/20日制作完成。</p>
+                <p>Relonix UI(Rounding)已于2025/07/20日制作完成。</p>
                 <h3>其他</h3>
                 <p>如有其他疑问,请B站私信！</p>
             </div>
@@ -527,7 +527,7 @@
             <div class="preview">
                 <h2>资源下载</h2>
                 <div class="download-item">
-                    <span>Relonix材质包</span>
+                    <span>Relonix UI(Rounding)</span>
                     <a href="files/Relonix.zip" class="download-btn" download="Relonix.zip" id="download1">
                         下载
                     </a>
@@ -693,10 +693,9 @@
             }
         };
 
-        // 事件监听器设置
         document.getElementById('download1').addEventListener('click', function(e) {
             if (downloadManager.isInCooldown('download1')) {
-                e.preventDefault(); // 阻止默认下载行为
+                e.preventDefault();
                 notificationManager.showNotification("请稍后重试...", true);
                 return;
             }
@@ -719,4 +718,5 @@
     </script>
 </body>
 </html>
+
 
