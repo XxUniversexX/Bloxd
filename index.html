@@ -666,7 +666,6 @@
                 
                 notificationManager.showNotification(`开始下载 ${resourceName}...`);
                 
-                // 如果是Relonix材质包，直接触发下载
                 if (btnId === 'download1') {
                     // 模拟下载延迟
                     setTimeout(() => {
@@ -701,23 +700,7 @@
                 notificationManager.showNotification("请稍后重试...", true);
                 return;
             }
-            downloadManager.startDownload('download1', 'Relonix材质包');
-        });
-
-        document.getElementById('download2').addEventListener('click', function() {
-            if (downloadManager.isInCooldown('download2')) {
-                notificationManager.showNotification("请稍后重试...", true);
-                return;
-            }
-            downloadManager.startDownload('download2', 'Bloxd UI脚本');
-        });
-
-        document.getElementById('download3').addEventListener('click', function() {
-            if (downloadManager.isInCooldown('download3')) {
-                notificationManager.showNotification("请稍后重试...", true);
-                return;
-            }
-            downloadManager.startDownload('download3', '游戏指南PDF');
+            downloadManager.startDownload('download1', 'Relonix(Rounding)');
         });
 
         document.getElementById('setOnline').addEventListener('click', function() {
@@ -736,3 +719,4 @@
     </script>
 </body>
 </html>
+
