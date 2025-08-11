@@ -627,13 +627,13 @@
             const account1Status = document.getElementById('account1Status');
             const account2Status = document.getElementById('account2Status');
             
-            if (onlineStatus === "offline") {
+            if (onlineStatus === "online") {
                 statusIndicator.className = 'status-indicator status-online';
                 statusText.textContent = "在线";
                 account1Status.className = 'server-status status-playing';
                 account1Status.textContent = "在线";
                 account2Status.className = 'server-status status-playing';
-                account2Status.textContent = "在线";
+                account2Status.textContent = "离线";
             } else {
                 statusIndicator.className = 'status-indicator status-offline';
                 statusText.textContent = "离线";
@@ -679,3 +679,4 @@
     </script>
 </body>
 </html>
+
